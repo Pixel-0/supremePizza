@@ -54,8 +54,8 @@ class Pizza(db.Model):
     size = db.Column(db.String(255))
     price = db.Column(db.Numeric(8,2))
     description = db.Column(db.String(255))
-    users = db.relationship("User", backref = "pizza", lazy="dynamic")
-
+    users = db.relationship("User", backref = "Pizza", lazy="dynamic")
+    crust_id = db.relationship("Crust", backref="Pizza", lazy = "dynamic")
 
     def save_pizza(self):
         db.session.add(self)
@@ -71,5 +71,12 @@ class Topping(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), unique = True)
     price = db.Column(db.Numeric(8,2))
-    pizza = db.relationship("Pizza", backref= "toppings", lazy="dynamic")
-    
+    pizza_id = db.relationship("Pizza", backref= "toppings", lazy="dynamic")
+
+class Crust(db.Model):
+    __tablename__="crust"
+
+    id= db.Column(db.Integer, primary_key= True)
+    name = db.Column (db.String(255), unique = True)
+    price = db.Column(db.Numeric(8,2))
+    pizza_id= db.relationship("Pizza", backref= "Crust", lazy="dynamic")
