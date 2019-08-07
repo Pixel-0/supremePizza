@@ -46,14 +46,14 @@ class Roles(db.Model):
     __tablename__ = 'Roles'
     id = db.Column(db.Integer, primary_key = True)
     type = db.Column(db.String(255))
-    users = db.relatioship("User", backref = role, lazy="dynamic")
+    users = db.relationship("User", backref = "Role", lazy="dynamic")
 
 class Pizza(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     size = db.Column(db.String(255))
     price = db.Column(db.Numeric(8,2))
     description = db.Column(db.String(255))
-    users = db.relatioship("User", backref = role, lazy="dynamic")
+    users = db.relationship("User", backref = "Pizza", lazy="dynamic")
 
 
     def save_pizza(self):
