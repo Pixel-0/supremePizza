@@ -29,11 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-<<<<<<< HEAD
 set -gx VIRTUAL_ENV "/home/moringa/Desktop/supremePizza/virtual"
-=======
-set -gx VIRTUAL_ENV "/home/smoucha/Desktop/supremePizza/virtual"
->>>>>>> a978058ead728587466066e19005b35461c5ddb0
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
