@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 #!/home/smoucha/Desktop/supremePizza/virtual/bin/python3
 
+=======
+#!/home/moringa/Desktop/supremePizza/virtual/bin/python
+>>>>>>> 3d78aff2ba432346f7d4a7efdf87a89763a84756
 # -*- coding: utf-8 -*-
 import re
 import sys

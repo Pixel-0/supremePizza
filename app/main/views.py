@@ -11,3 +11,5 @@ def pizza():
     pizza order page
     '''
     pizza = Pizza.query.all()
+
+    return render_template('index.html', pizza = pizza)
