@@ -15,7 +15,7 @@ def profile(uname):
 
 
 @main.route('/')
-def ():
+def pizza():
     '''
     pizza order page
     '''
