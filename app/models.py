@@ -10,6 +10,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
+
 class User(db.Model):
     '''
     creating table for users
@@ -21,8 +22,9 @@ class User(db.Model):
     email = db.Column(db.String(255), index = True)
     password_hash = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
-
-
+    role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
+    
+    
     #securing passwords
     @property
     def password(self):
@@ -39,14 +41,18 @@ class User(db.Model):
         return f'User{self.username}'
 
 
+
+
 class Roles(db.Model):
-    '''
-    database table for Roles
-    '''
     __tablename__ = 'roles'
+    
     id = db.Column(db.Integer, primary_key = True)
-    type = db.Column(db.String(255))
-    users = db.relationship("User", backref = "roles", lazy="dynamic")
+    name = db.Column(db.String(255))
+    users = db.relationship('User',backref = 'role',lazy="dynamic")
+
+    def __repr__(self):
+        return f'User{self.name}'
+
 
 class Pizza(db.Model):
     __tablename__="pizza"
@@ -54,24 +60,20 @@ class Pizza(db.Model):
     size = db.Column(db.String(255))
     price = db.Column(db.Numeric(8,2))
     description = db.Column(db.String(255))
-    users = db.relationship("User", backref = "Pizza", lazy="dynamic")
-    crust_id = db.relationship("Crust", backref="Pizza", lazy = "dynamic")
-
+    users = db.relationship("User", backref = "Pizza")
+    crust_id= db.relationship("Crust", backref= "Pizza") 
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    topping_id = db.Column(db.Integer,db.ForeignKey('toppings.id'))
+    
     def save_pizza(self):
         db.session.add(self)
         db.session.commit()
 
     @classmethod
-    def get_pizza(cls,id):
-        pizza = Pizza.query.filter_by(pizza_size=size)
-    
-class Topping(db.Model):
-    __tablename__="toppings"
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), unique = True)
-    price = db.Column(db.Numeric(8,2))
-    pizza_id = db.relationship("Pizza", backref= "toppings", lazy="dynamic")
+    def get_pizza(cls):
+        pizza = Pizza.query.all()
+        
+        return pizza
 
 class Crust(db.Model):
     __tablename__="crust"
@@ -79,4 +81,29 @@ class Crust(db.Model):
     id= db.Column(db.Integer, primary_key= True)
     name = db.Column (db.String(255), unique = True)
     price = db.Column(db.Numeric(8,2))
-    pizza_id= db.relationship("Pizza", backref= "Crust", lazy="dynamic")
+    pizza_id = db.Column(db.Integer, db.ForeignKey('Pizza.id'))
+    pizza = db.relationship("Pizza", backref="Crust")
+
+
+    def save_toppings(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_crust():
+        crust = Crust.query.all() 
+        return crust       
+    
+class Topping(db.Model):
+    __tablename__="toppings"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), unique = True)
+    price = db.Column(db.Numeric(8,2))
+    pizza_id = db.relationship("Pizza", backref= "Topping   ")
+
+    @classmethod
+    def  get_toppings(cls):
+        toppings = toppings.query.all()
+        return  crust
+
