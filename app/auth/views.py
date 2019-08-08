@@ -29,6 +29,7 @@ def register():
         db.session.add(user)
         db.session.commit()
 
+        
 
         return redirect(url_for('auth.login'))
         title = "New Account"
