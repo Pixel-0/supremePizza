@@ -1,3 +1,4 @@
+
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
 
@@ -11,42 +12,78 @@
 <!-- Content block -->
 {% block content %}
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    </ol>
-  
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="..." alt="...">
-        <div class="carousel-caption">
-          ...
-        </div>
+<div style="background-color: rgba(0, 0, 0, 0.7)" id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div style="margin-left: 300px;" class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img style="width: 50%; float: left; display: block;" class="flex-active-slide" src="https://wallpapercave.com/wp/wp1813227.jpg" alt="..." height="50px">
+      <div class="carousel-caption">
+        <p>Supreme Pizza</p>
       </div>
-      <div class="item">
-        <img src="..." alt="...">
-        <div class="carousel-caption">
-          ...
-        </div>
-      </div>
-      ...
     </div>
-  
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+    <div class="item">
+      <img style="width: 50%; float: left; display: block;" class="flex-active-slide" src="https://wallpapercave.com/wp/wp3603146.jpg" alt="..." height="20px">
+      <div class="carousel-caption">
+        <p>Supreme Pizza</p>
+      </div>
+    </div>
+    <div class="item">
+      <img style="width: 50%; float: left; display: block;" class="flex-active-slide" src="https://wallpapercave.com/wp/wp2315643.jpg" alt="..." height="50px">
+      <div class="carousel-caption">
+        <p>Supreme Pizza</p>
+      </div>
+    </div>
+    </div>
   </div>
 
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
+<div class="jumbotron">
+  <div class="row">
+      <div class="col-md-4">
+          <h3>Menu</h3>
+          <ul>
+            <li>Pizza</li>
+            <li>Drinks</li>
+            <li>Starters</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Hot Combos</h3>
+          <ul>
+            <li>Kah Kaupa Combo</li>
+            <li>Extreme Combo</li>
+            <li>Jinji Combo</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Customer Service</h3>
+          <ul>
+            <li>Contact</li>
+            <li>FAQ's</li>
+            <li>Careers</li>
+          </ul>
+        </div>
+  </div>
+</div>
 
 {% endblock%}
+
+
+

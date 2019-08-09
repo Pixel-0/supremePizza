@@ -22,7 +22,7 @@ class User(db.Model):
     email = db.Column(db.String(255), index = True)
     password_hash = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
-    role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
+    # role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     
     
     #securing passwords
@@ -48,7 +48,7 @@ class Roles(db.Model):
     
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(255))
-    users = db.relationship('User',backref = 'role',lazy="dynamic")
+    # users = db.relationship('User',backref = 'role',lazy="dynamic")
 
     def __repr__(self):
         return f'User{self.name}'
@@ -60,11 +60,12 @@ class Pizza(db.Model):
     size = db.Column(db.String(255))
     price = db.Column(db.Numeric(8,2))
     description = db.Column(db.String(255))
-    users = db.relationship("User", backref = "Pizza")
-    crust_id= db.relationship("Crust", backref= "Pizza") 
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-    topping_id = db.Column(db.Integer,db.ForeignKey('toppings.id'))
-    
+    # users = db.relationship("User", backref = "Pizza")
+    # crust = db.Column(db.Integer,db.ForeignKey("Crust.id"))
+    # # crust_id= db.relationship("Crust", backref= "Pizza") 
+    # user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    # topping_id = db.Column(db.Integer,db.ForeignKey('toppings.id'))
+
     def save_pizza(self):
         db.session.add(self)
         db.session.commit()
@@ -81,8 +82,8 @@ class Crust(db.Model):
     id= db.Column(db.Integer, primary_key= True)
     name = db.Column (db.String(255), unique = True)
     price = db.Column(db.Numeric(8,2))
-    pizza_id = db.Column(db.Integer, db.ForeignKey('Pizza.id'))
-    pizza = db.relationship("Pizza", backref="Crust")
+    # pizza_id = db.Column(db.Integer, db.ForeignKey('Pizza.id'))
+    # # pizza = db.relationship("Pizza", backref="Crust")
 
 
     def save_toppings(self):
@@ -100,7 +101,7 @@ class Topping(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), unique = True)
     price = db.Column(db.Numeric(8,2))
-    pizza_id = db.relationship("Pizza", backref= "Topping   ")
+    # pizza_id = db.relationship("Pizza", backref= "Topping   ")
 
     @classmethod
     def  get_toppings(cls):
